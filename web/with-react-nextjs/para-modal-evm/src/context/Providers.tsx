@@ -3,7 +3,7 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { ParaProvider as ParaSDKProvider } from "@getpara/react-sdk";
 import { API_KEY, ENVIRONMENT } from "@/config/constants";
-import { sepolia } from "wagmi/chains";
+import { rootstock, rootstockTestnet } from "wagmi/chains";
 
 const queryClient = new QueryClient();
 
@@ -20,11 +20,11 @@ export function Providers({
           env: ENVIRONMENT,
         }}
         externalWalletConfig={{
-          wallets: ["METAMASK"],
+          wallets: ["METAMASK", "WALLETCONNECT"],
           includeWalletVerification: true,
           evmConnector: {
             config: {
-              chains: [sepolia],
+              chains: [rootstockTestnet],
             },
           },
           walletConnect: {
@@ -35,8 +35,8 @@ export function Providers({
         paraModalConfig={{
           disableEmailLogin: false,
           disablePhoneLogin: false,
-          authLayout: ["EXTERNAL:FULL"],
-          oAuthMethods: [],
+          authLayout: ["AUTH:FULL","EXTERNAL:FULL"],
+          oAuthMethods: ["GOOGLE","TWITTER","TELEGRAM"],
           onRampTestMode: true,
           theme: {
             foregroundColor: "#222222",
