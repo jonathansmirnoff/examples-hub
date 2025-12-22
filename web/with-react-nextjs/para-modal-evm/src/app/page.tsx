@@ -6,6 +6,7 @@ import { ConnectWalletCard } from "@/components/ui/ConnectWalletCard";
 import { SignatureDisplay } from "@/components/ui/SignatureDisplay";
 import { PageHeader } from "@/components/PageHeader";
 import { ConnectedWallet } from "@/components/ConnectedWallet";
+import { WalletBalances } from "@/components/WalletBalances";
 
 const HELLO_WORLD_MESSAGE = "Hello World!";
 
@@ -46,6 +47,8 @@ export default function Home() {
       ) : (
         <div className="max-w-xl mx-auto">
           <ConnectedWallet address={address} />
+
+          <WalletBalances address={address} />
 
           <StatusAlert
             show={alertStatus.show}

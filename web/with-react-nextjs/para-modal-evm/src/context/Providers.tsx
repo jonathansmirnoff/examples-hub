@@ -18,7 +18,7 @@ export function Providers({
         paraClientConfig={{
           apiKey: API_KEY,
           env: ENVIRONMENT,
-        }}
+        }}        
         externalWalletConfig={{
           wallets: ["METAMASK", "WALLETCONNECT"],
           includeWalletVerification: true,
@@ -33,6 +33,44 @@ export function Providers({
         }}
         config={{ appName: "Para Modal + EVM Wallets Example" }}
         paraModalConfig={{
+          balances:{
+            displayType: 'AGGREGATED',
+            requestType: 'MAINNET_AND_TESTNET',
+            additionalAssets: [
+              {
+                name: 'RBTC',
+                symbol: 'RBTC',
+                priceUrl: "https://api.coingecko.com/api/v3/simple/price?ids=rootstock&vs_currencies=usd",
+                logoUrl: "https://assets.coingecko.com/coins/images/3794/large/rsk_logo.png?1645471916",
+                implementations: [
+                  {
+                    network: {
+                      name: 'Rootstock',
+                      evmChainId: '30',
+                      logoUrl: "https://assets.coingecko.com/coins/images/3794/large/rsk_logo.png?1645471916",
+                      rpcUrl: 'https://public-node.rsk.co',
+                    },
+                  },
+                ],
+              },
+              {
+                name: 'tRBTC',
+                symbol: 'tRBTC',
+                logoUrl: "https://assets.coingecko.com/coins/images/3794/large/rsk_logo.png?1645471916",
+                implementations: [
+                  {
+                    network: {
+                      name: 'Rootstock Testnet',
+                      evmChainId: '31',
+                      logoUrl: "https://assets.coingecko.com/coins/images/3794/large/rsk_logo.png?1645471916",
+                      rpcUrl: 'https://public-node.testnet.rsk.co',
+                      isTestnet: true,
+                    },
+                  },
+                ],
+              },
+            ],
+          },
           disableEmailLogin: false,
           disablePhoneLogin: false,
           authLayout: ["AUTH:FULL","EXTERNAL:FULL"],

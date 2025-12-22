@@ -10,8 +10,8 @@ export function ConnectedWallet({ address }: ConnectedWalletProps) {
       </div>
       <div className="px-6 py-3">
         <p className="text-sm text-gray-500">Address</p>
-        <p className="text-lg font-medium text-gray-900 font-mono">
-          {address?.slice(0, 6)}...{address?.slice(-4)}
+        <p className="text-lg font-medium text-white font-mono">
+          {address}
         </p>
       </div>
     </div>
